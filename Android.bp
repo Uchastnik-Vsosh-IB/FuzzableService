@@ -1,0 +1,52 @@
+android_app {
+
+    name: "FuzzableService",
+
+    aidl: {
+        local_include_dirs: ["src/aidl"],
+    },
+
+    srcs: [
+        "src/**/*.java",
+        "src/**/I*.aidl",
+    ],
+
+    resource_dirs: ["res"],
+
+    manifest: "AndroidManifest.xml",
+    static_libs: [
+    "services",
+    ],
+
+    platform_apis: true,
+    privileged: true,
+    certificate: "platform",
+
+    optimize: {
+        enabled: false,
+    },
+
+}
+
+java_sdk_library {
+    // This is the target being built.
+    name: "org.xsafter.fuzzableservice.lib",
+    installable: true,
+    static_libs: [
+        "services",
+    ],
+    optimize: {
+        enabled: false,
+    },
+
+    aidl: {
+        local_include_dirs: ["src/aidl"],
+    },
+
+    srcs: [
+    "src/java/org/xsafter/fuzzableservice/IVehicleDataInterfaceImpl.java",
+    "src/java/org/xsafter/fuzzableservice/VehicleDataService.java",
+    "src/java/org/xsafter/fuzzableservice/VehicleDataServiceManager.java",
+
+    ] + ["src/aidl/**/I*.aidl"],
+}

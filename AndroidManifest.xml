@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="org.xsafter.fuzzableservice"
+          android:sharedUserId="android.uid.system">
+    <application android:name=".FuzzerTestService"
+                 android:persistent="true"
+                 android:exported="true">
+
+        <uses-library android:name="org.xsafter.fuzzableservice.lib" />
+    </application>
+
+</manifest>
